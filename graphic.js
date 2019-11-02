@@ -88,9 +88,9 @@ d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_data
         let sndDeviation = Math.sqrt(d3.variance(data, function(d) { return +d.value; }))
         let total = d3.sum(data, function(d) { return +d.value; })
         console.log('Min: ' + min + ' kWh');
-        console.log('Max: ' + max + ' kWh');
+        cole.log('Median: ' + median + ' kWh');
+        consonsole.log('Max: ' + max + ' kWh');
         console.log('Mean: ' + mean + ' kWh');
-        console.log('Median: ' + median + ' kWh');
         console.log('SrdDeviation: ' + sndDeviation + ' kWh');
         console.log('Total: ' + total + ' kWh');
         console.log(d3.values)
