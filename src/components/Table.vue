@@ -30,7 +30,30 @@ export default {
       }).catch((err) => {
         this.electricityData = err
       })
+    },
+    getDaily : function (query, rowlimit) {
+      const client = Stitch.initializeDefaultAppClient('hackio-vgzck');
+      const db = client.getServiceClient(RemoteMongoClient.factory, 'MongoDB-Stitch').db('EngieHack');
+      client.auth.loginWithCredential(new AnonymousCredential()).then(() =>
+        db.collection('dailydata').find({}, { limit: rowlimit}).asArray()
+      ).then((docs) => {
+        this.electricityData = docs
+      }).catch((err) => {
+        this.electricityData = err
+      })
+    },
+    getHourly : function (query, rowlimit) {
+      const client = Stitch.initializeDefaultAppClient('hackio-vgzck');
+      const db = client.getServiceClient(RemoteMongoClient.factory, 'MongoDB-Stitch').db('EngieHack');
+      client.auth.loginWithCredential(new AnonymousCredential()).then(() =>
+        db.collection('hourlydata').find({}, { limit: rowlimit}).asArray()
+      ).then((docs) => {
+        this.electricityData = docs
+      }).catch((err) => {
+        this.electricityData = err
+      })
     }
+
   },
   mounted: function () {
     this.getData({}, 100)
